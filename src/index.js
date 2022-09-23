@@ -27,7 +27,7 @@ submitButton.addEventListener('click', () => {
     getWeather()
     .then(function(){
         displayWeather()
-        clearModal()
+        setTimeout(clearModal, 500)
     })
 })
 
