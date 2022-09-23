@@ -1,6 +1,8 @@
 import "./style.css"
 
 const submitButton = document.getElementById('submit')
+let modal = document.querySelector('.modal');
+let overlay = document.querySelector('.overlay');
 let citySearch = 'Vancouver';
 let weatherObject = ''
 
@@ -20,29 +22,39 @@ async function getWeather() {
 }
 
 submitButton.addEventListener('click', () => {
+    activateModal()
     getUserSearch();
     getWeather()
     .then(function(){
         displayWeather()
+        clearModal()
     })
 })
 
 function displayWeather() {
     if (weatherObject === 'error') {
         console.log("weather load error")
+    } else {
+        let weatherDescription = document.getElementById('weather-description');
+        let cityDisplay = document.getElementById('city')
+        let temperature = document.getElementById('temperature')
+        weatherDescription.innerText = weatherObject.weather[0].description
+        temperature.innerText = weatherObject.main.feels_like;
+        cityDisplay.innerText = weatherObject.name
     }
-    let weatherDescription = document.getElementById('weather-description');
-    let cityDisplay = document.getElementById('city')
-    let temperature = document.getElementById('temperature')
-    weatherDescription.innerText = weatherObject.weather[0].description
-    temperature.innerText = weatherObject.main.feels_like;
-    cityDisplay.innerText = weatherObject.name
-
 }
 
 function getUserSearch() {
     citySearch = document.getElementById('city-search').value;
     document.getElementById('city-search').value = '';
+}
+
+function clearModal() {
+    modal.classList.remove('active');
+}
+
+function activateModal() {
+    modal.classList.add('active');
 }
 
 
