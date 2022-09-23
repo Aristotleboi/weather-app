@@ -1,0 +1,13 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    display: flex;
+    background-color: black;
+    color: gold;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,3 +1,5 @@
+import "./style.css"
+
 const submitButton = document.getElementById('submit')
 let citySearch = 'Vancouver';
 let weatherObject = ''
@@ -6,7 +8,7 @@ async function getWeather() {
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&APPID=65d57bbf714db2778c05eb37107c6320&units=metric`)
         if (response.ok == false) {
-            console.log('error wrong city')
+            return weatherObject = "error"
         } else {
             let weatherData = await response.json()
             weatherObject = await weatherData
@@ -26,6 +28,9 @@ submitButton.addEventListener('click', () => {
 })
 
 function displayWeather() {
+    if (weatherObject === 'error') {
+        console.log("weather load error")
+    }
     let weatherDescription = document.getElementById('weather-description');
     let cityDisplay = document.getElementById('city')
     let temperature = document.getElementById('temperature')
@@ -39,4 +44,6 @@ function getUserSearch() {
     citySearch = document.getElementById('city-search').value;
     document.getElementById('city-search').value = '';
 }
+
+
 
