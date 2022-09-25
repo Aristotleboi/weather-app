@@ -8,17 +8,22 @@
 </head>
 <body>
     <div class="header">
+        <div id="header-text">Weather App</div>
         <div class="form">
-            <label for="city-search">Ener City</label>
+            <label for="city-search">Enter City</label>
             <input type="text" name="city-search" id="city-search">
             <button type="submit" id="submit">submit</button>
         </div>
     </div>
     
     <div class="content">
-        <div id="city"></div>
-        <div id="weather-description"></div>
-        <div id="temperature"></div>
+        <div class="wrapper">
+            <div id="city"></div>
+            <div id="weather-description"></div>
+            <div id="temperature"></div>
+            <div id="humidity"></div>
+            <div id="wind"></div>
+        </div>
     </div>
 
     <div class="modal">
