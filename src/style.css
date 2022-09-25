@@ -1,15 +1,60 @@
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0px;
     padding: 0px;
 }
 
+/*all header css*/
 .header {
     display: flex;
-    background-color: black;
+    flex-direction: column;
+    background-color: rgb(19, 18, 18);
     color: gold;
     height: 50px;
     align-items: center;
     justify-content: center;
+    padding: 30px 0px;
+}
+
+#header-text {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.form {
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: rgb(56, 55, 55);
+    color: gold;
+}
+/*header css ends */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(56, 55, 55);
+}
+
+.wrapper {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper.active {
+    height: 250px;
+    min-width: 300px;
+    background-color: rgb(19, 18, 18);
+    border: 2px solid black;
+    color: rgb(88, 88, 167);
 }
 
 .modal {

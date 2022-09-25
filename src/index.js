@@ -2,7 +2,7 @@ import "./style.css"
 
 const submitButton = document.getElementById('submit')
 let modal = document.querySelector('.modal');
-let overlay = document.querySelector('.overlay');
+let wrapper = document.querySelector('.wrapper')
 let citySearch = 'Vancouver';
 let weatherObject = ''
 
@@ -22,12 +22,14 @@ async function getWeather() {
 }
 
 submitButton.addEventListener('click', () => {
-    activateModal()
+    activateClass(modal)
     getUserSearch();
     getWeather()
     .then(function(){
+        console.log(weatherObject)
         displayWeather()
-        setTimeout(clearModal, 500)
+        if (!wrapper.hasAttribute('.active')) activateClass(wrapper)
+        setTimeout(clearActivateClass(modal), 250)
     })
 })
 
@@ -38,9 +40,13 @@ function displayWeather() {
         let weatherDescription = document.getElementById('weather-description');
         let cityDisplay = document.getElementById('city')
         let temperature = document.getElementById('temperature')
+        let humidity = document.getElementById('humidity');
+        let wind = document.getElementById('wind');
         weatherDescription.innerText = weatherObject.weather[0].description
-        temperature.innerText = weatherObject.main.feels_like;
+        temperature.innerHTML = weatherObject.main.feels_like + '&deg;'
         cityDisplay.innerText = weatherObject.name
+        humidity.innerText = 'Humidity: ' + weatherObject.main.humidity;
+        wind.innerText = 'Wind Speed: ' + weatherObject.wind.speed + '/KMH'
     }
 }
 
@@ -49,12 +55,12 @@ function getUserSearch() {
     document.getElementById('city-search').value = '';
 }
 
-function clearModal() {
-    modal.classList.remove('active');
+function clearActivateClass(element) {
+    element.classList.remove('active');
 }
 
-function activateModal() {
-    modal.classList.add('active');
+function activateClass(element) {
+    element.classList.add('active');
 }
 
 
