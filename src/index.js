@@ -4,6 +4,7 @@ const submitButton = document.getElementById('submit')
 let modal = document.querySelector('.modal');
 let wrapper = document.querySelector('.wrapper')
 let content = document.querySelector('.content')
+let warning = document.getElementById('error')
 let citySearch = 'Vancouver';
 let weatherObject = ''
 
@@ -36,7 +37,7 @@ submitButton.addEventListener('click', () => {
 
 function displayWeather() {
     if (weatherObject === 'error') {
-        console.log("weather load error")
+        showWarning()
     } else {
         let weatherDescription = document.getElementById('weather-description');
         let cityDisplay = document.getElementById('city')
@@ -48,6 +49,7 @@ function displayWeather() {
         cityDisplay.innerText = weatherObject.name
         humidity.innerText = 'Humidity: ' + weatherObject.main.humidity;
         wind.innerText = 'Wind Speed: ' + weatherObject.wind.speed + '/KMH'
+        closeWarning()
         changeBackground();
     }
 }
@@ -59,6 +61,8 @@ function changeBackground(weather) {
         content.style.backgroundImage = 'url(../src/images/clouds.jpg)'
     } else if (weatherObject.weather[0].description.indexOf('clear') > -1) {
         content.style.backgroundImage = 'url(../src/images/clear-sky.jpg)'
+    } else {
+        return
     }
 }
 
@@ -75,5 +79,13 @@ function activateClass(element) {
     element.classList.add('active');
 }
 
+function showWarning() {
+    activateClass(warning)
+    warning.innerText = "Invalid City name. Please try again!"
+}
 
+function closeWarning() {
+    clearActivateClass(warning)
+    warning.innerText = ''
+}
 
