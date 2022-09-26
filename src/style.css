@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: rgb(19, 18, 18);
-    color: gold;
+    color: rgb(186, 186, 194);
     height: 50px;
     align-items: center;
     justify-content: center;
@@ -39,24 +39,33 @@ input {
     align-items: center;
     height: 100vh;
     background-color: rgb(56, 55, 55);
+    object-fit: cover;
 }
 
 .wrapper {
     border: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding-bottom: 50px;
 }
 
 .wrapper.active {
-    height: 250px;
-    min-width: 300px;
-    background-color: rgb(19, 18, 18);
+    height: 450px;
+    min-width: 500px;
+    background-color: rgba(19, 18, 18, .4);
     border: 2px solid black;
-    color: rgb(88, 88, 167);
+    color: rgb(186, 186, 194);
 }
 
+#city {
+    font-size: 44px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+/*loading screen */
 .modal {
     display: flex;
     flex-direction: column;

@@ -3,6 +3,7 @@ import "./style.css"
 const submitButton = document.getElementById('submit')
 let modal = document.querySelector('.modal');
 let wrapper = document.querySelector('.wrapper')
+let content = document.querySelector('.content')
 let citySearch = 'Vancouver';
 let weatherObject = ''
 
@@ -47,6 +48,17 @@ function displayWeather() {
         cityDisplay.innerText = weatherObject.name
         humidity.innerText = 'Humidity: ' + weatherObject.main.humidity;
         wind.innerText = 'Wind Speed: ' + weatherObject.wind.speed + '/KMH'
+        changeBackground();
+    }
+}
+
+function changeBackground(weather) {
+    if (weatherObject.weather[0].description.indexOf('rain') > -1) {
+        content.style.backgroundImage = 'url(../src/images/rain.jpg)'
+    } else if (weatherObject.weather[0].description.indexOf('cloud') > -1) {
+        content.style.backgroundImage = 'url(../src/images/clouds.jpg)'
+    } else if (weatherObject.weather[0].description.indexOf('clear') > -1) {
+        content.style.backgroundImage = 'url(../src/images/clear-sky.jpg)'
     }
 }
 
